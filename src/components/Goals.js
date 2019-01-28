@@ -5,19 +5,17 @@ import { handleAddGoal, handleDeleteGoal } from '../actions/goals';
 
 class Goals extends Component {
   addItem = (e) => {
-    e.preventDefault()
-    const name = this.input.value
-    const done = () => this.input.value = ''
-    this.props.dispatch(handleAddGoal(name, done))
+    e.preventDefault();
+    const name = this.input.value;
+    const done = () => this.input.value = '';
+    this.props.addGoal(name, done);
   }
 
-  removeItem = (goal) => {
-    this.props.dispatch(handleDeleteGoal(goal))
-  }
+  removeItem = (goal) => this.props.deleteGoal(goal);
 
   render() {
     return (
-      <div style={style}>
+      <div className='goals'>
         <h1>Goals</h1>
         <input
           type='text'
@@ -35,13 +33,15 @@ class Goals extends Component {
   }
 }
 
-const style = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-}
+const mapStateToProps = ({ goals }) => ({ goals });
 
-export default 
-  connect((state) => ({
-    goals: state.goals
-  }))(Goals);
+const mapDispatchToProps = (dispatch) => ({
+  addGoal(name, done) {
+    dispatch(handleAddGoal(name, done))
+  },
+  deleteGoal(goal) {
+    dispatch(handleDeleteGoal(goal))
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Goals);

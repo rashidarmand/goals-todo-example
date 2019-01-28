@@ -8,20 +8,16 @@ class Todos extends Component {
     e.preventDefault();
     const name = this.input.value;
     const done = () => this.input.value = '';
-    this.props.dispatch(handleAddTodo(name, done));
+    this.props.addTodo(name, done);
   }
 
-  removeItem = (todo) => {
-    this.props.dispatch(handleDeleteTodo(todo));
-  }
+  removeItem = (todo) => this.props.deleteTodo(todo);
 
-  toggleItem = (id) => {
-    this.props.dispatch(handleToggleTodo(id));
-  }
+  toggleItem = (id) => this.props.toggleTodo(id);
   
   render() {
     return (
-      <div style={style}>
+      <div className='todos'>
         <h1>Todo List</h1>
         <input
           type='text'
@@ -40,13 +36,18 @@ class Todos extends Component {
   }
 }
 
-const style = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-}
+const mapStateToProps = ({ todos }) => ({ todos });
 
-export default 
-  connect((state) => ({
-    todos: state.todos
-  }))(Todos);
+const mapDispatchToProps = (dispatch) => ({
+  addTodo(name, done) {
+    dispatch(handleAddTodo(name, done));
+  },
+  deleteTodo(todo) {
+    dispatch(handleDeleteTodo(todo));
+  },
+  toggleTodo(id) {
+    dispatch(handleToggleTodo(id));
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);

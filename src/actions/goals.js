@@ -4,19 +4,15 @@ export const ADD_GOAL = 'ADD_GOAL';
 export const REMOVE_GOAL = 'REMOVE_GOAL';
 
 // Action Creators
-function addGoal(goal) {
-  return {
-    type: ADD_GOAL,
-    goal,
-  }
-};
+const addGoal = (goal) => ({
+  type: ADD_GOAL,
+  goal
+});
 
-function removeGoal(id) {
-  return {
-    type: REMOVE_GOAL,
-    id,
-  }
-};
+const removeGoal = (id) => ({
+  type: REMOVE_GOAL,
+  id
+});
 
 // Asynchronus action creators that return functions.
 // The functions are able to be invoked before the reducer runs on the action thanks to redux-thunk
@@ -36,8 +32,8 @@ export function handleAddGoal(name, done) {
   return (dispatch) => {
     return API.saveGoal(name)
       .then((goal) => {
-        dispatch(addGoal(goal))
-        done()
+        dispatch(addGoal(goal));
+        done();
       })
       .catch(() => alert('There was an error. Try again.'))
   }

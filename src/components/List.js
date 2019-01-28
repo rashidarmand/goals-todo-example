@@ -3,7 +3,7 @@ import React from 'react';
 const List = ({ toggle, items, remove }) => (
   <ul>
     {items.map((item) => (
-      <li key={item.id} style={{ cursor: 'pointer' }}>
+      <li key={item.id} >
         <span
           onClick={ () => toggle && toggle(item.id) }
           style={{ textDecoration: item.complete ? 'line-through' : 'none' }}

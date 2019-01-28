@@ -6,15 +6,14 @@ import ConnectedGoals from './Goals';
 
 class App extends Component {
   componentDidMount () {
-    const { dispatch } = this.props;
-    dispatch(handleInitialData());
+    this.props.grabData();
   }
-  
+
   render() {
     const { loading } = this.props;
 
     return loading
-      ? <h3>Loading...</h3>
+      ? <h2 style={style}>Loading...</h2>
       : (
         <div>
           <ConnectedTodos />
@@ -24,7 +23,14 @@ class App extends Component {
   }
 }
 
-export default 
-  connect((state) => ({
-    loading: state.loading
-  }))(App)
+const style = { textAlign: 'center' };
+
+const mapStateToProps = ({ loading }) => ({ loading });
+
+const mapDispatchToProps = (dispatch) => ({
+  grabData() {
+    dispatch(handleInitialData())
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
