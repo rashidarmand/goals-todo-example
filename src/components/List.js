@@ -5,7 +5,7 @@ export default function List (props) {
   return (
     <ul>
       {items.map((item) => (
-        <li key={item.id}>
+        <li key={item.id} style={{ cursor: 'pointer' }}>
           <span
             onClick={ () => toggle && toggle(item.id) }
             style={{ textDecoration: item.complete ? 'line-through' : 'none' }}
