@@ -9,6 +9,7 @@ class App extends Component {
     const { dispatch } = this.props;
     dispatch(handleInitialData());
   }
+  
   render() {
     const { loading } = this.props;
 

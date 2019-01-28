@@ -26,5 +26,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "git-scripts": "^0.2.1"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "surge --project ./build --domain goals-todos-example.surge.sh" 
+    } 
+  } 
 }

@@ -17,13 +17,13 @@ class Goals extends Component {
 
   render() {
     return (
-      <div>
+      <div style={style}>
         <h1>Goals</h1>
         <input
           type='text'
           placeholder='Add Goal'
           ref={ (input) => this.input = input }
-        />
+        /> <br/>
         <button onClick={ this.addItem }>Add Goal</button>
   
         <List
@@ -33,6 +33,12 @@ class Goals extends Component {
       </div>
     );
   }
+}
+
+const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 }
 
 export default 

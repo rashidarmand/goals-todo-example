@@ -21,13 +21,13 @@ class Todos extends Component {
   
   render() {
     return (
-      <div>
+      <div style={style}>
         <h1>Todo List</h1>
         <input
           type='text'
           placeholder='Add Todo'
           ref={ (input) => this.input = input }
-        />
+        /> <br/>
         <button onClick={ this.addItem }>Add Todo</button>
   
         <List
@@ -38,6 +38,12 @@ class Todos extends Component {
       </div>
     )
   }
+}
+
+const style = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 }
 
 export default 
