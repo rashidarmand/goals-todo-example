@@ -2,4 +2,4 @@
 
 ## Todo list example built with React & Redux
 
-Click [here]() to visit site
+Click [here](goals-todos-example.surge.sh) to visit site
